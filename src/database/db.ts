@@ -2,6 +2,7 @@ import { MongoClient, Db, InsertOneWriteOpResult } from 'mongodb';
 
 export enum Collections {
     Users = 'users',
+    Trips = 'trips',
 }
 
 export class MongoDatabase {
