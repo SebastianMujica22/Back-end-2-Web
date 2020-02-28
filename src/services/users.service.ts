@@ -39,7 +39,7 @@ export default class UsersService {
             const user = await db.getOneDocument(Collections.Users, { email });
 
             if (!user) {
-                throw new HttpError(409, `User does not exist`);
+                throw new HttpError(404, `User does not exist`);
             }
 
             passwordMatch(password, user.password);

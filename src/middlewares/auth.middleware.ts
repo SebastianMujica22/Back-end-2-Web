@@ -8,8 +8,12 @@ export default function authMiddleware(req: authReq, res: Response, next: NextFu
     const token = req.headers.authorization;
 
     if (token) {
-        const decodedToken = decodeToken(token);
-        req.decodedToken = decodedToken;
+        try {
+            const decodedToken = decodeToken(token);
+            req.decodedToken = decodedToken;
+        } catch (e) {
+            throw new HttpException(401, e.message);
+        }
     }
 
     next();
